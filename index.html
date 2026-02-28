@@ -7,13 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* โทนสีม่วงชมพูตามรูปภาพ Babybear Studio */
+    /* ปรับพื้นหลังให้เข้มขึ้นตามตัวอย่าง Babybear */
     --main-purple: #9575CD;
     --main-pink: #F48FB1;
-    --text-color: #7E57C2; /* สีตัวหนังสือโทนม่วงตามรูป */
-    --bg-grad: linear-gradient(180deg, #FCE4EC 0%, #F3E5F5 100%);
-    --btn-grad: linear-gradient(90deg, #CE93D8, #F48FB1); /* ไล่สีปุ่มและตัวเลข */
-    --card-bg: rgba(255, 255, 255, 0.9);
+    --text-color: #6A4C93; 
+    --shop-name-color: #7E57C2; /* สีชื่อร้านที่ดรอปลง ไม่จี๊ด */
+    --bg-grad: linear-gradient(180deg, #F8BBD0 0%, #E1BEE7 100%); /* พื้นหลังเข้มขึ้น */
+    --btn-grad: linear-gradient(90deg, #CE93D8, #F48FB1);
+    --card-bg: rgba(255, 255, 255, 0.92);
   }
   
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -21,6 +22,7 @@
   body {
     font-family: 'Mitr', sans-serif;
     background: var(--bg-grad);
+    background-attachment: fixed;
     min-height: 100vh;
     color: var(--text-color);
     overflow-x: hidden;
@@ -28,8 +30,7 @@
     justify-content: center;
   }
 
-  /* ตกแต่งพื้นหลัง */
-  .sp { position:fixed; pointer-events:none; z-index:0; animation:fl 5s ease-in-out infinite; opacity:0.4; }
+  .sp { position:fixed; pointer-events:none; z-index:0; animation:fl 5s ease-in-out infinite; opacity:0.5; }
   .sp:nth-child(1){top:10%;left:5%;font-size:24px;}
   .sp:nth-child(2){top:25%;right:10%;font-size:18px;animation-delay:1s;}
   .sp:nth-child(3){bottom:20%;left:8%;font-size:20px;animation-delay:2s;}
@@ -39,15 +40,17 @@
 
   .header { margin-bottom: 25px; animation: fadeUp 0.8s ease; }
   
+  /* ปรับชื่อร้านให้ดรอปลงตามสั่ง */
   .shop-name {
-    font-size: 3rem; font-weight: 700;
-    color: var(--text-color);
+    font-size: 2.8rem; font-weight: 700;
+    color: var(--shop-name-color);
     margin-bottom: 5px;
+    letter-spacing: -1px;
   }
   
   .shop-sub { 
-    font-size: 0.9rem; color: var(--main-pink); 
-    font-weight: 400;
+    font-size: 0.9rem; color: #AD1457; 
+    font-weight: 400; opacity: 0.8;
   }
 
   .pills-container {
@@ -62,9 +65,9 @@
     font-size: 0.8rem;
     color: var(--main-pink);
     font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   }
 
-  /* Status Bar แบบเส้นประจัดกลาง */
   .status-bar-dashed {
     margin: 10px auto 25px;
     padding: 12px;
@@ -72,23 +75,22 @@
     border: 2px dashed var(--main-purple);
     border-radius: 15px;
     display: flex; align-items: center; justify-content: center; gap: 8px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
     color: var(--text-color);
     font-weight: 500;
     font-size: 0.95rem;
   }
   .status-dot {
-    width: 10px; height: 10px; background: #81C784;
-    border-radius: 50%; box-shadow: 0 0 8px rgba(129, 199, 132, 0.5);
+    width: 10px; height: 10px; background: #66BB6A;
+    border-radius: 50%; box-shadow: 0 0 8px rgba(102, 187, 106, 0.5);
   }
 
-  /* คั่นกลางด้วยจุดดาว */
-  .divider { color: var(--main-purple); margin: 20px 0; font-size: 1.2rem; opacity: 0.6; }
+  .divider { color: var(--main-purple); margin: 20px 0; font-size: 1.2rem; opacity: 0.7; }
 
   .card {
     background: var(--card-bg);
     border-radius: 25px; padding: 22px; margin-bottom: 18px;
-    box-shadow: 0 8px 20px rgba(149, 117, 205, 0.1);
+    box-shadow: 0 8px 25px rgba(106, 76, 147, 0.12);
     animation: fadeUp 0.6s ease both;
     text-align: left;
   }
@@ -100,23 +102,23 @@
   
   .price-item {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 10px 0; border-bottom: 1px dashed var(--main-purple);
+    padding: 10px 0; border-bottom: 1px dashed #D1C4E9;
     color: var(--text-color);
   }
   .price-item:last-child { border-bottom: none; }
   .price-tag {
-    background: var(--soft-purple);
+    background: #F3E5F5;
     color: var(--text-color);
     padding: 4px 15px; border-radius: 20px; font-weight: 600;
     min-width: 70px; text-align: center;
     font-size: 0.9rem;
+    border: 1px solid #E1BEE7;
   }
 
-  /* ลำดับเลขไล่สีตามรูป image.png (PART 10) */
   .step-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
   .step-num {
     width: 28px; height: 28px; 
-    background: var(--btn-grad); /* ไล่สีเลขลำดับตามรูป */
+    background: var(--btn-grad);
     color: white;
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
     font-size: 0.85rem; font-weight: 600; flex-shrink: 0;
@@ -125,24 +127,23 @@
 
   .lnk {
     display: flex; align-items: center; gap: 10px;
-    background: #fff; border: 1px solid var(--soft-purple);
+    background: #fff; border: 1px solid #F3E5F5;
     border-radius: 15px; padding: 12px; margin-bottom: 8px;
     text-decoration: none; transition: 0.2s;
   }
   .lnk-name { font-weight: 600; color: var(--text-color); font-size: 0.95rem; }
-  .lnk-desc { font-size: 0.78rem; color: #B39DDB; }
+  .lnk-desc { font-size: 0.78rem; color: #9575CD; }
 
-  /* ปุ่มสั่งซื้อไล่สีม่วงชมพูตามรูป */
   .cta-btn {
     display: inline-block; width: 90%;
     background: var(--btn-grad);
     color: #fff; font-size: 1.05rem; font-weight: 600; padding: 14px;
     border-radius: 50px; text-decoration: none;
-    box-shadow: 0 6px 15px rgba(244, 143, 177, 0.3);
+    box-shadow: 0 6px 15px rgba(244, 143, 177, 0.4);
     margin-top: 10px;
   }
 
-  .footer { margin-top: 30px; font-size: 0.75rem; color: #B39DDB; }
+  .footer { margin-top: 30px; font-size: 0.75rem; color: #7E57C2; font-weight: 500; }
   
   @keyframes fadeUp { from{opacity:0;transform:translateY(15px);} to{opacity:1;transform:translateY(0);} }
 </style>
@@ -176,7 +177,7 @@
     <div class="price-item"><span>100 เหรียญ</span><span class="price-tag">50 บาท</span></div>
     <div class="price-item"><span>150 เหรียญ</span><span class="price-tag">75 บาท</span></div>
     <div class="price-item"><span>Line Melody</span><span class="price-tag">45 บาท</span></div>
-    <p style="margin-top:12px; font-size:0.8rem; color:var(--main-pink); font-weight:500; text-align:center;">✅ เหรียญแท้ ไม่ดึงคืน ส่งเป็นของขวัญได้ 100%</p>
+    <p style="margin-top:12px; font-size:0.8rem; color:#D81B60; font-weight:500; text-align:center;">✅ เหรียญแท้ ไม่ดึงคืน ส่งเป็นของขวัญได้ 100%</p>
   </div>
 
   <div class="card">
@@ -184,7 +185,7 @@
     <div class="step-item"><div class="step-num">1</div><div class="step-text">แคปรูปภาพ หรือแชร์ลิงก์ลายที่ต้องการ</div></div>
     <div class="step-item"><div class="step-num">2</div><div class="step-text">แจ้ง ID Line หรือ QR Code ของผู้รับ</div></div>
     <div class="step-item"><div class="step-num">3</div><div class="step-text">รอแม่ค้ารวมยอด และโอนเงินแจ้งสลิป</div></div>
-    <p style="font-size:0.75rem; color:#F06292; text-align:center; margin-top:5px;">⚠️ รับฝากลิงก์แบบคอนแทค กรุณาแจ้งทุกครั้ง</p>
+    <p style="font-size:0.75rem; color:#D81B60; text-align:center; margin-top:5px;">⚠️ รับฝากลิงก์แบบคอนแทค กรุณาแจ้งทุกครั้ง</p>
   </div>
   <div class="card">
     <div class="ct">💎 แอปพรีเมี่ยม</div>
@@ -240,14 +241,14 @@
     <div class="step-item"><div class="step-num">1</div><div class="step-text">แจ้งแอปที่ต้องการ + จำนวนวัน</div></div>
     <div class="step-item"><div class="step-num">2</div><div class="step-text">รอแม่ค้าเช็คสินค้าและแจ้งยอด</div></div>
     <div class="step-item"><div class="step-num">3</div><div class="step-text">โอนเงินแจ้งสลิป แล้วรอรับสินค้าได้เลย</div></div>
-    <p style="font-size:0.75rem; color:#B39DDB; text-align:center; margin-top:8px;">📢 อย่าลืมอ่านกฎก่อนเข้าใช้งานทุกครั้งนะคะ</p>
+    <p style="font-size:0.75rem; color:#9575CD; text-align:center; margin-top:8px;">📢 อย่าลืมอ่านกฎก่อนเข้าใช้งานทุกครั้งนะคะ</p>
   </div>
 
   <a href="https://line.me/ti/p/@319mynzv" class="cta-btn" target="_blank">💜 ติดต่อสอบถาม / สั่งซื้อ</a>
 
   <div class="footer">
     <div>ขอบคุณที่ใช้บริการนะคะ 🩷</div>
-    <div style="margin-top:5px; opacity:0.6;">Premium Shop · 2026</div>
+    <div style="margin-top:5px; opacity:0.7;">Premium Shop · 2026</div>
   </div>
 </div>
 
