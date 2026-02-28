@@ -6,338 +6,214 @@
 <title>Premium Shop 🩷💜</title>
 <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
---color1: #FCE4EC; /* ชมพูอ่อน /
---color2: #F8BBD0; / ชมพูพาสเทล /
---color3: #CE93D8; / ม่วงอ่อน /
---color4: #AB47BC; / ม่วงสดใส /
---tag-bg: #F3E5F5; / พื้นหลังปุ่มราคา (ม่วงอ่อนมาก) /
---tag-text: #8E24AA; / สีตัวเลขในปุ่มราคา (ม่วงเข้ม) */
---text: #4A148C;
---textl: #8E24AA;
---bg-grad: linear-gradient(160deg, #FCE4EC 0%, #FFFFFF 50%, #F3E5F5 100%);
---white: rgba(255, 255, 255, 0.85);
-}
-• { margin:0; padding:0; box-sizing:border-box; }
-body {
-font-family: 'Mitr', sans-serif;
-background: var(--bg-grad);
-min-height: 100vh;
-color: var(--text);
-overflow-x: hidden;
-}
-body::before {
-content: '';
-position:fixed; inset:0;
-background:
-radial-gradient(circle at 15% 15%, rgba(248, 187, 208, 0.4) 0%, transparent 45%),
-radial-gradient(circle at 85% 85%, rgba(206, 147, 216, 0.2) 0%, transparent 45%);
-pointer-events:none; z-index:0;
-}
-.sp { position:fixed; pointer-events:none; z-index:0; animation:fl 5s ease-in-out infinite; opacity:0.6; color: var(--color3); }
-.sp:nth-child(1){top:4%;left:5%;font-size:22px;}
-.sp:nth-child(2){top:12%;right:8%;font-size:14px;animation-delay:1s;}
-.sp:nth-child(3){top:38%;left:2%;font-size:12px;animation-delay:2s;}
-.sp:nth-child(4){top:55%;right:4%;font-size:20px;animation-delay:.5s;}
-.sp:nth-child(5){bottom:22%;left:7%;font-size:16px;animation-delay:1.5s;}
-@keyframes fl {0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-14px) rotate(8deg);}}
-.wrap { max-width:480px; margin:0 auto; padding:16px 14px 60px; position:relative; z-index:1; }
-.header { text-align:center; padding:35px 0 20px; animation:fadeUp .7s ease both; }
-.logo-wrapper {
-margin-bottom: 25px;
-display: flex;
-justify-content: center;
-position: relative;
-width: fit-content;
-margin-left: auto;
-margin-right: auto;
-}
-.logo-img {
-width: 180px;
-height: 180px;
-object-fit: cover;
-border-radius: 50%;
-border: 6px solid #fff;
-outline: 2px solid var(--color2);
-box-shadow: 0 8px 25px rgba(248, 187, 208, 0.4);
-background: #fff;
-position: relative;
-z-index: 2;
-}
-.logo-emoji {
-position: absolute;
-font-size: 1.5rem;
-z-index: 1;
-animation: floatEmoji 3s ease-in-out infinite;
-}
-.e1 { top: -10px; left: -10px; animation-delay: 0s; }
-.e2 { top: -10px; right: -10px; animation-delay: 0.5s; }
-.e3 { bottom: 10px; left: -20px; animation-delay: 1s; }
-.e4 { bottom: 10px; right: -20px; animation-delay: 1.5s; }
-@keyframes floatEmoji {
-0%, 100% { transform: translateY(0) scale(1); }
-50% { transform: translateY(-10px) scale(1.1); }
-}
-.shop-name {
-font-size:2.4rem; font-weight:700;
-color: var(--color4);
-letter-spacing:1px;
-text-shadow: 2px 2px 4px rgba(171, 71, 188, 0.2);
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 12px;
-}
-.shop-sub { font-size:.85rem; color:var(--textl); margin-top:8px; line-height:1.7; padding: 0 20px; }
-.badges { display:flex; justify-content:center; gap:7px; flex-wrap:wrap; margin-top:11px; }
-.badge {
-background:#fff; border:1.5px solid var(--color2);
-border-radius:20px; padding:4px 13px;
-font-size:.72rem; color:var(--color4); font-weight:500;
-}
-.status-bar {
-margin: 20px auto;
-padding: 12px;
-width: 90%;
-border: 2px dashed var(--color3);
-border-radius: 15px;
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 10px;
-background: rgba(255, 255, 255, 0.5);
-color: var(--text);
-font-weight: 500;
-font-size: 0.95rem;
-animation: fadeUp 0.8s ease both;
-}
-.status-dot {
-width: 10px;
-height: 10px;
-background-color: #FF4081;
-border-radius: 50%;
-box-shadow: 0 0 8px #FF4081;
-animation: pulse 1.5s infinite;
-}
-@keyframes pulse {
-0% { opacity: 1; transform: scale(1); }
-50% { opacity: 0.5; transform: scale(1.1); }
-100% { opacity: 1; transform: scale(1); }
-}
-.card {
-background: var(--white); backdrop-filter:blur(12px);
-border:1.5px solid rgba(248, 187, 208, 0.3);
-border-radius:22px; padding:20px 18px; margin-bottom:14px;
-box-shadow:0 4px 18px rgba(171, 71, 188, 0.1);
-position:relative; overflow:hidden;
-animation:fadeUp .6s ease both;
-}
-.ct { font-size:.98rem; font-weight:600; color:var(--color4); margin-bottom:13px; display:flex; align-items:center; gap:8px; }
-.ct .ic { font-size:1.15rem; }
-.step-container { padding: 5px 2px; }
-.step-item {
-display: flex;
-align-items: flex-start;
-gap: 14px;
-margin-bottom: 16px;
-position: relative;
-}
-.step-num {
-width: 26px;
-height: 26px;
-background: var(--color4);
-color: white;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 0.85rem;
-font-weight: 600;
-flex-shrink: 0;
-box-shadow: 0 2px 6px rgba(171, 71, 188, 0.3);
-}
-.step-star {
-width: 26px;
-height: 26px;
-background: #FCE4EC;
-color: #E91E63;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 0.9rem;
-flex-shrink: 0;
-box-shadow: 0 2px 6px rgba(233, 30, 99, 0.2);
-}
-.step-text { font-size: 0.9rem; line-height: 1.6; color: var(--text); font-weight: 500; }
-.payment-box {
-background: #fff;
-border: 1px solid var(--color2);
-border-radius: 12px;
-padding: 10px 14px;
-margin-top: 20px;
-display: flex;
-align-items: center;
-gap: 10px;
-font-size: 0.8rem;
-color: var(--text);
-}
-.payment-box b { color: var(--color4); }
-.price-list { list-style: none; margin-top: 10px; }
-.price-item {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 12px 0;
-border-bottom: 1px dashed var(--color2);
-}
-.price-item:last-child { border-bottom: none; }
-.price-label { font-size: 0.95rem; font-weight: 500; color: var(--text); }
-.price-tag {
-background: var(--tag-bg);
-color: var(--tag-text);
-padding: 4px 16px;
-border-radius: 20px;
-font-weight: 600;
-font-size: 0.9rem;
-min-width: 65px;
-text-align: center;
-}
-.note-msg {
-margin-top: 15px;
-font-size: 0.78rem;
-color: var(--textl);
-display: flex;
-align-items: center;
-gap: 5px;
-line-height: 1.4;
-}
-.div { text-align:center; color:var(--color2); font-size:.85rem; letter-spacing:7px; margin:4px 0 14px; }
-.lnk {
-display:flex; align-items:center; gap:10px;
-background:linear-gradient(135deg,#ffffff,#fdf4ff);
-border:1.5px solid rgba(248, 187, 208, 0.2); border-radius:14px;
-padding:12px 14px; text-decoration:none; color:var(--text);
-font-size:.84rem; transition:all .2s; margin-bottom:9px;
-}
-.lnk:hover { transform:translateX(4px); border-color: var(--color4); background: #fff; }
-.lnk-ic { font-size:1.3rem; flex-shrink:0; }
-.lnk-name { font-weight:600; font-size:.88rem; color:var(--color4); margin-bottom:2px; }
-.lnk-desc { font-size:0.75rem; color:var(--textl); }
-.cta-wrap { text-align:center; padding:8px 0; }
-.price-notice {
-font-size: 0.75rem;
-color: var(--textl);
-margin-bottom: 12px;
-text-align: center;
-}
-.cta-btn {
-display:inline-block; width:100%; max-width:300px;
-background:linear-gradient(135deg, var(--color3), var(--color4));
-color:#fff; font-family: 'Mitr', sans-serif;
-font-size:1rem; font-weight:500; padding:14px 36px;
-border-radius:50px; text-decoration:none;
-box-shadow:0 8px 24px rgba(171, 71, 188, 0.3);
-transition:all .3s;
-}
-.cta-btn:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(171, 71, 188, 0.4); }
-.footer { text-align:center; padding:16px 0 8px; font-size:.73rem; color:var(--textl); }
-@keyframes fadeUp { from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);} }
+  :root {
+    --color1: #FF80AB; 
+    --color2: #F06292; 
+    --color3: #BA68C8; 
+    --color4: #9C27B0; 
+    --tag-bg: #F3E5F5; 
+    --tag-text: #7B1FA2; 
+    --text: #4A148C; 
+    --textl: #8E24AA; 
+    --bg-grad: linear-gradient(135deg, #F8BBD0 0%, #FFFFFF 50%, #E1BEE7 100%);
+    --white: rgba(255, 255, 255, 0.9);
+  }
+  
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Mitr', sans-serif;
+    background: var(--bg-grad);
+    min-height: 100vh;
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position:fixed; inset:0;
+    background:
+      radial-gradient(circle at 10% 20%, rgba(255, 128, 171, 0.4) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(186, 104, 200, 0.3) 0%, transparent 40%);
+    pointer-events:none; z-index:0;
+  }
+
+  .sp { position:fixed; pointer-events:none; z-index:0; animation:fl 5s ease-in-out infinite; opacity:0.6; color: var(--color3); }
+  .sp:nth-child(1){top:5%;left:8%;font-size:24px;}
+  .sp:nth-child(2){top:15%;right:10%;font-size:16px;animation-delay:1s;}
+  .sp:nth-child(3){top:40%;left:3%;font-size:14px;animation-delay:2s;}
+  .sp:nth-child(4){top:60%;right:6%;font-size:22px;animation-delay:.5s;}
+  .sp:nth-child(5){bottom:22%;left:10%;font-size:18px;animation-delay:1.5s;}
+  @keyframes fl {0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-15px) rotate(10deg);}}
+
+  .wrap { max-width:480px; margin:0 auto; padding:20px 15px 70px; position:relative; z-index:1; }
+
+  .header { text-align:center; padding:40px 0 25px; animation:fadeUp .7s ease both; }
+
+  .shop-name {
+    font-size: 3.2rem; font-weight: 700;
+    color: var(--color4); text-shadow: 2px 2px 5px rgba(156, 39, 176, 0.2);
+    margin-bottom: 5px;
+  }
+  .shop-sub { font-size:.9rem; color:var(--textl); line-height:1.7; padding: 0 25px; }
+
+  .status-bar {
+    margin: 25px auto; padding: 14px; width: 92%;
+    border: 2px dashed var(--color3); border-radius: 18px;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    background: rgba(255, 255, 255, 0.6); font-weight: 500;
+  }
+  .status-dot {
+    width: 12px; height: 12px; background-color: #E91E63;
+    border-radius: 50%; box-shadow: 0 0 10px #E91E63; animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.6;transform:scale(1.15);} }
+
+  .card {
+    background: var(--white); backdrop-filter:blur(15px);
+    border:1.5px solid rgba(240, 98, 146, 0.3);
+    border-radius:25px; padding:22px 20px; margin-bottom:16px;
+    box-shadow:0 6px 20px rgba(156, 39, 176, 0.1);
+    animation:fadeUp .6s ease both;
+  }
+
+  .ct { font-size:1.05rem; font-weight:600; color:var(--color4); margin-bottom:15px; display:flex; align-items:center; gap:10px; }
+  
+  .price-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 0; border-bottom: 1px dashed var(--color3);
+  }
+  .price-item:last-child { border-bottom: none; }
+  .price-tag {
+    background: var(--tag-bg); color: var(--tag-text);
+    padding: 5px 20px; border-radius: 25px; font-weight: 600; min-width: 75px; text-align: center;
+  }
+
+  .step-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 18px; }
+  .step-num {
+    width: 28px; height: 28px; background: var(--color4); color: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; font-weight: 600; flex-shrink: 0;
+  }
+  .step-text { font-size: 0.95rem; line-height: 1.7; color: var(--text); font-weight: 500; }
+
+  .lnk {
+    display:flex; align-items:center; gap:12px;
+    background:linear-gradient(135deg,#ffffff,#fdf4ff);
+    border:1.5px solid rgba(240, 98, 146, 0.2); border-radius:16px;
+    padding:14px; text-decoration:none; margin-bottom:10px; transition: 0.2s;
+  }
+  .lnk:hover { transform:translateX(5px); border-color: var(--color4); background: #fff; }
+  .lnk-name { font-weight:600; font-size:.95rem; color:var(--color4); }
+  .lnk-desc { font-size:0.78rem; color:var(--textl); }
+
+  .cta-btn {
+    display:inline-block; width:100%; max-width:320px;
+    background:linear-gradient(135deg, var(--color2), var(--color4));
+    color:#fff; font-size:1.1rem; font-weight:500; padding:15px 40px;
+    border-radius:50px; text-decoration:none; box-shadow:0 10px 25px rgba(156, 39, 176, 0.3);
+  }
+
+  .footer { text-align:center; padding:20px 0; font-size:.78rem; color:var(--textl); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
 </style>
 </head>
 <body>
 <div class="sp">🩷</div><div class="sp">🎀</div><div class="sp">🫧</div><div class="sp">💜</div><div class="sp">🔮</div>
+
 <div class="wrap">
-<div class="header">
-<div class="logo-wrapper">
-<span class="logo-emoji e1">🩷</span><span class="logo-emoji e2">🎀</span><span class="logo-emoji e3">🫧</span><span class="logo-emoji e4">💜</span>
-<img src="Logo.jpeg" alt="Logo" class="logo-img">
-</div>
-<div class="shop-name">Premium Shop</div>
-<div class="shop-sub">ยินดีต้อนรับสู่ร้านค้าพรีเมี่ยม ขายของแท้ ราคาน่ารัก ดูแลตลอดการสั่งซื้อ 💕</div>
-<div class="badges">
-<span class="badge">🎨 Sticker</span><span class="badge">🌈 Theme</span><span class="badge">✨ Emoji</span><span class="badge">🎵 Melody</span>
-</div>
-</div>
-<div class="status-bar">
-<div class="status-dot"></div>พร้อมรับออเดอร์นะคะ 💕
-</div>
-<div class="div">✦ · · ✦ · · ✦</div>
-<div class="card">
-<div class="ct"><span class="ic">📝</span> เงื่อนไขการสั่งซื้อ (Line)</div>
-<div class="step-container">
-<div class="step-item"><div class="step-num">1</div><div class="step-text">แคปรูปภาพ หรือแชร์ลิงก์ลายที่ต้องการ</div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-text">แจ้ง ID Line หรือ QR Code ของผู้รับ</div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-text">รอแม่ค้ารวมยอด และแจ้งเลขบัญชี</div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-text">โอนเงินแล้วแจ้งสลิป</div></div>
-<div class="note-msg" style="color:#D81B60;">⚠️ รับฝากลิงก์แบบคอนแทค กรุณาแจ้งทุกครั้ง</div>
-<div class="note-msg"><span>✅</span> เหรียญแท้ ไม่ดึงคืน ส่งเป็นของขวัญ 100%</div>
-</div>
-</div>
-<div class="card">
-<div class="ct"><span class="ic">💰</span> ราคาเหรียญ LINE</div>
-<div class="price-list">
-<div class="price-item"><span class="price-label">50 เหรียญ</span><span class="price-tag">25 บาท</span></div>
-<div class="price-item"><span class="price-label">85 เหรียญ</span><span class="price-tag">45 บาท</span></div>
-<div class="price-item"><span class="price-label">100 เหรียญ</span><span class="price-tag">50 บาท</span></div>
-<div class="price-item"><span class="price-label">150 เหรียญ</span><span class="price-tag">75 บาท</span></div>
-<div class="price-item"><span class="price-label">Line Melody</span><span class="price-tag">45 บาท</span></div>
-</div>
-</div>
-<div class="card">
-<div class="ct"><span class="ic">💎</span> แอพพรีเมี่ยม</div>
-<a href="https://drive.google.com/drive/folders/1w7B9yuiQIA06vfk05nQdsDAulnd806tA" class="lnk" target="_blank">
-<span class="lnk-ic">🎞️</span><div><div class="lnk-name">Bilibili</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
-</a>
-<a href="https://drive.google.com/drive/folders/1K02IyNmQIGVpmiQ7dPSu3WfGpEPJdutR" class="lnk" target="_blank">
-<span class="lnk-ic">🏰</span><div><div class="lnk-name">Disney+</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
-</a>
-<a href="https://drive.google.com/drive/folders/1FhNIvITWf00y_-srDtRfK9YqVCUdLWRl" class="lnk" target="_blank">
-<span class="lnk-ic">🥢</span><div><div class="lnk-name">iQIYI</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
-</a>
-<a href="https://drive.google.com/drive/folders/1hFFDiA2pViXl-zMMuGu47Gvy5agpXraw" class="lnk" target="_blank">
-<span class="lnk-ic">🎥</span><div><div class="lnk-name">Netflix</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
-</a>
-<a href="https://drive.google.com/drive/folders/1s-6S-k8PUFjLemqAVY0RbSLNybVqX7ba" class="lnk" target="_blank">
-<span class="lnk-ic">💙</span><div><div class="lnk-name">Prime Video</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
-</a>
-<a href="https://drive.google.com/drive/folders/1VzTYaa882t4k_GhI6RM5uHgTKjCLJAJ0" class="lnk" target="blank">
-<span class="lnk-ic">🌟</span><div><div class="lnk-name">Viu</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
-</a>
-<a href="https://drive.google.com/drive/folders/1AQVw7ginFbFC27pczCCuZnSnv6VneOl" class="lnk" target="_blank">
-<span class="lnk-ic">🟢</span><div><div class="lnk-name">WeTV</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
-</a>
-<a href="https://drive.google.com/drive/folders/1mAoQ5HRyIKN4PHNpUalZkuTirHwHt8mS" class="lnk" target="_blank">
-<span class="lnk-ic">🎧</span><div><div class="lnk-name">YouTube (ต่อเมล)</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
-</a>
-<a href="https://drive.google.com/drive/folders/1JoOXBU_JmOlHK1eDTJwAKoxRxrzi3jpq" class="lnk" target="_blank">
-<span class="lnk-ic">🎧</span><div><div class="lnk-name">YouTube (ไม่ต่อเมล)</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
-</a>
-</div>
-<div class="card">
-<div class="ct"><span class="ic">📌</span> ขั้นตอนการสั่งซื้อ (แอพพรีเมี่ยม)</div>
-<div class="step-container">
-<div class="step-item"><div class="step-num">1</div><div class="step-text">แจ้งแอพที่ต้องการ + จำนวนวัน</div></div>
-<div class="step-item"><div class="step-num">2</div><div class="step-text">รอแม่ค้าเช็คสินค้า</div></div>
-<div class="step-item"><div class="step-num">3</div><div class="step-text">หากมีของพร้อมส่ง แม่ค้าจะแจ้งยอดและเลขบัญชี</div></div>
-<div class="step-item"><div class="step-num">4</div><div class="step-text">โอนเงินแล้วแจ้งสลิป แล้วรอรับสินค้าได้เลย</div></div>
-<div class="note-msg"><span>📢</span> อย่าลืมอ่านกฎก่อนเข้าใช้งานทุกครั้งนะคะ</div>
-</div>
-</div>
-<div class="card">
-<div class="ct"><span class="ic">📱</span> ช่องทางติดต่อ</div>
-<a href="https://line.me/ti/p/@319mynzv" class="lnk" target="_blank">
-<span class="lnk-ic">💬</span><div><div class="lnk-name">Line Official</div><div class="lnk-desc">@319mynzv</div></div>
-</a>
-</div>
-<div class="cta-wrap">
-<div class="price-notice">* ราคามีการปรับขึ้นลงนะคะ กรุณาสอบถามก่อนสั่งซื้อนะคะ *</div>
-<a href="https://line.me/ti/p/@319mynzv" class="cta-btn" target="_blank">💜 ติดต่อสอบถามจิ้มเลย!</a>
-</div>
-<div class="footer">
-<div>ขอบคุณสำหรับความไว้วางใจให้เราดูแลนะคะ 🩷</div>
-<div style="margin-top:5px; opacity:0.7;">made with 💜 · Premium Shop · 2026</div>
-</div>
+  <div class="header">
+    <div class="shop-name">Premium Shop</div>
+    <div class="shop-sub">ขายของแท้ ราคาน่ารัก ดูแลตลอดการสั่งซื้อ 💕</div>
+  </div>
+
+  <div class="status-bar">
+    <div class="status-dot"></div>พร้อมรับออเดอร์นะคะ 💕
+  </div>
+
+  <div class="card">
+    <div class="ct">💰 ราคาเหรียญ LINE</div>
+    <div class="price-item"><span>50 เหรียญ</span><span class="price-tag">25 บาท</span></div>
+    <div class="price-item"><span>85 เหรียญ</span><span class="price-tag">45 บาท</span></div>
+    <div class="price-item"><span>100 เหรียญ</span><span class="price-tag">50 บาท</span></div>
+    <div class="price-item"><span>150 เหรียญ</span><span class="price-tag">75 บาท</span></div>
+    <div class="price-item"><span>Line Melody</span><span class="price-tag">45 บาท</span></div>
+    <p style="margin-top:15px; font-size:0.85rem; color:var(--color2);">✅ เหรียญแท้ ไม่ดึงคืน ส่งเป็นของขวัญ 100%</p>
+  </div>
+
+  <div class="card">
+    <div class="ct">📝 วิธีสั่งซื้อ (Line)</div>
+    <div class="step-item"><div class="step-num">1</div><div class="step-text">แคปรูปภาพ หรือแชร์ลิงก์ลายที่ต้องการ</div></div>
+    <div class="step-item"><div class="step-num">2</div><div class="step-text">แจ้ง ID Line หรือ QR Code ของผู้รับ</div></div>
+    <div class="step-item"><div class="step-num">3</div><div class="step-text">รอแม่ค้ารวมยอด และโอนเงินแจ้งสลิป</div></div>
+    <p style="font-size:0.8rem; color:#C2185B;">⚠️ รับฝากลิงก์แบบคอนแทค กรุณาแจ้งทุกครั้ง</p>
+  </div>
+
+  <div class="card">
+    <div class="ct">💎 แอปพรีเมี่ยม</div>
+    
+    <a href="https://drive.google.com/drive/folders/1w7B9yuiQIA06vfk05nQdsDAulnd806tA" class="lnk" target="_blank">
+      <span style="font-size:1.5rem; margin-right:10px;">🎞️</span>
+      <div><div class="lnk-name">Bilibili</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1K02IyNmQIGVpmiQ7dPSu3WfGpEPJdutR" class="lnk" target="_blank">
+      <span style="font-size:1.5rem; margin-right:10px;">🏰</span>
+      <div><div class="lnk-name">Disney+</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1FhNIvITWf00y_-srDtRfK9YqVCUdLWRl" class="lnk" target="_blank">
+      <span style="font-size:1.5rem; margin-right:10px;">🥢</span>
+      <div><div class="lnk-name">iQIYI</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1hFFDiA2pViXl-zMMuGu47Gvy5agpXraw" class="lnk" target="_blank">
+      <span style="font-size:1.5rem; margin-right:10px;">🎥</span>
+      <div><div class="lnk-name">Netflix</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1s-6S-k8PUFjLemqAVY0RbSLNybVqX7ba" class="lnk" target="_blank">
+      <span style="font-size:1.5rem; margin-right:10px;">💙</span>
+      <div><div class="lnk-name">Prime Video</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1VzTYaa882t4k_GhI6RM5uHgTKjCLJAJ0" class="lnk" target="_blank">
+      <span style="font-size:1.5rem; margin-right:10px;">🌟</span>
+      <div><div class="lnk-name">Viu</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1AQVw7ginFbFC27pczCCuZnSnv6VneOl_" class="lnk" target="_blank">
+      <span style="font-size:1.5rem; margin-right:10px;">🟢</span>
+      <div><div class="lnk-name">WeTV</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1mAoQ5HRyIKN4PHNpUalZkuTirHwHt8mS" class="lnk" target="_blank">
+      <span style="font-size:1.5rem; margin-right:10px;">🎧</span>
+      <div><div class="lnk-name">YouTube (ต่อเมล)</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1JoOXBU_JmOlHK1eDTJwAKoxRxrzi3jpq" class="lnk" target="_blank">
+      <span style="font-size:1.5rem; margin-right:10px;">🎧</span>
+      <div><div class="lnk-name">YouTube (ไม่ต่อเมล)</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="ct">📌 วิธีสั่งซื้อ (แอปพรีเมี่ยม)</div>
+    <div class="step-item"><div class="step-num">1</div><div class="step-text">แจ้งแอปที่ต้องการ + จำนวนวัน</div></div>
+    <div class="step-item"><div class="step-num">2</div><div class="step-text">รอแม่ค้าเช็คสินค้าและแจ้งยอด</div></div>
+    <div class="step-item"><div class="step-num" style="background:var(--color1);">3</div><div class="step-text">โอนเงินแจ้งสลิป แล้วรอรับสินค้าได้เลย</div></div>
+    <p style="font-size:0.8rem; color:var(--textl);">📢 อย่าลืมอ่านกฎก่อนเข้าใช้งานทุกครั้งนะคะ</p>
+  </div>
+
+  <div class="cta-wrap" style="text-align:center;">
+    <a href="https://line.me/ti/p/@319mynzv" class="cta-btn" target="_blank">💜 ติดต่อสอบถาม / สั่งซื้อ</a>
+  </div>
+
+  <div class="footer">
+    <div>ขอบคุณที่ใช้บริการนะคะ 🩷</div>
+    <div style="margin-top:5px; opacity:0.6;">Premium Shop · 2026</div>
+  </div>
 </div>
 </body>
 </html>
