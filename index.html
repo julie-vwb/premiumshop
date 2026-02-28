@@ -7,15 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --color1: #FF80AB; 
-    --color2: #F06292; 
-    --color3: #BA68C8; 
-    --color4: #9C27B0; 
-    --tag-bg: #F3E5F5; 
-    --tag-text: #7B1FA2; 
-    --text: #4A148C; 
-    --textl: #8E24AA; 
-    --bg-grad: linear-gradient(135deg, #F8BBD0 0%, #FFFFFF 50%, #E1BEE7 100%);
+    --color1: #F8BBD0;
+    --color2: #F48FB1;
+    --color3: #CE93D8;
+    --color4: #BA68C8;
+    --text: #7E57C2;
+    --textl: #B39DDB;
+    --tag-bg: #F3E5F5;
+    --tag-text: #6A1B9A;
+    --bg-grad: linear-gradient(135deg, #FCE4EC 0%, #FFFFFF 50%, #F3E5F5 100%);
     --white: rgba(255, 255, 255, 0.9);
   }
   
@@ -33,8 +33,8 @@
     content: '';
     position:fixed; inset:0;
     background:
-      radial-gradient(circle at 10% 20%, rgba(255, 128, 171, 0.4) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, rgba(186, 104, 200, 0.3) 0%, transparent 40%);
+      radial-gradient(circle at 10% 20%, rgba(248, 187, 208, 0.3) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(206, 147, 216, 0.2) 0%, transparent 40%);
     pointer-events:none; z-index:0;
   }
 
@@ -50,30 +50,84 @@
 
   .header { text-align:center; padding:40px 0 25px; animation:fadeUp .7s ease both; }
 
+  .logo-wrapper {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .logo-img {
+    width: 180px; height: 180px;
+    object-fit: cover; border-radius: 50%;
+    border: 7px solid #fff; outline: 2px solid var(--color2);
+    box-shadow: 0 10px 30px rgba(244, 143, 177, 0.2);
+    position: relative; z-index: 2;
+  }
+
   .shop-name {
-    font-size: 3.2rem; font-weight: 700;
-    color: var(--color4); text-shadow: 2px 2px 5px rgba(156, 39, 176, 0.2);
+    font-size: 3rem; font-weight: 700;
+    color: var(--color4); text-shadow: 2px 2px 5px rgba(186, 104, 200, 0.15);
     margin-bottom: 5px;
   }
   .shop-sub { font-size:.9rem; color:var(--textl); line-height:1.7; padding: 0 25px; }
 
-  .status-bar {
-    margin: 25px auto; padding: 14px; width: 92%;
-    border: 2px dashed var(--color3); border-radius: 18px;
-    display: flex; align-items: center; justify-content: center; gap: 12px;
-    background: rgba(255, 255, 255, 0.6); font-weight: 500;
+  /* Pill Buttons สไตล์ image_4.png */
+  .pills-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .pill-btn {
+    background: #fff;
+    border: 1.5px solid var(--color2);
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+    color: var(--color2);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(244, 143, 177, 0.1);
+  }
+
+  /* Status Bar แบบเส้นประสไตล์ image_4.png */
+  .status-bar-dashed {
+    margin: 25px auto;
+    padding: 16px;
+    width: 90%;
+    border: 2px dashed var(--color3);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--text);
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
   }
   .status-dot {
-    width: 12px; height: 12px; background-color: #E91E63;
-    border-radius: 50%; box-shadow: 0 0 10px #E91E63; animation: pulse 1.5s infinite;
+    width: 12px;
+    height: 12px;
+    background-color: #81C784; /* สีเขียวสไตล์ image_4.png */
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(129, 199, 132, 0.5);
+    animation: pulse Green 1.5s infinite;
   }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.6;transform:scale(1.15);} }
+  @keyframes pulseGreen { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.6;transform:scale(1.1);} }
 
   .card {
     background: var(--white); backdrop-filter:blur(15px);
-    border:1.5px solid rgba(240, 98, 146, 0.3);
+    border:1.5px solid rgba(244, 143, 177, 0.2);
     border-radius:25px; padding:22px 20px; margin-bottom:16px;
-    box-shadow:0 6px 20px rgba(156, 39, 176, 0.1);
+    box-shadow:0 6px 20px rgba(186, 104, 200, 0.08);
     animation:fadeUp .6s ease both;
   }
 
@@ -100,7 +154,7 @@
   .lnk {
     display:flex; align-items:center; gap:12px;
     background:linear-gradient(135deg,#ffffff,#fdf4ff);
-    border:1.5px solid rgba(240, 98, 146, 0.2); border-radius:16px;
+    border:1.5px solid rgba(244, 143, 177, 0.15); border-radius:16px;
     padding:14px; text-decoration:none; margin-bottom:10px; transition: 0.2s;
   }
   .lnk:hover { transform:translateX(5px); border-color: var(--color4); background: #fff; }
@@ -111,7 +165,7 @@
     display:inline-block; width:100%; max-width:320px;
     background:linear-gradient(135deg, var(--color2), var(--color4));
     color:#fff; font-size:1.1rem; font-weight:500; padding:15px 40px;
-    border-radius:50px; text-decoration:none; box-shadow:0 10px 25px rgba(156, 39, 176, 0.3);
+    border-radius:50px; text-decoration:none; box-shadow:0 10px 25px rgba(186, 104, 200, 0.2);
   }
 
   .footer { text-align:center; padding:20px 0; font-size:.78rem; color:var(--textl); }
@@ -123,13 +177,24 @@
 
 <div class="wrap">
   <div class="header">
+    <div class="logo-wrapper">
+      <img src="Logo.jpeg" alt="Logo" class="logo-img">
+    </div>
     <div class="shop-name">Premium Shop</div>
-    <div class="shop-sub">ขายของแท้ ราคาน่ารัก ดูแลตลอดการสั่งซื้อ 💕</div>
+    <div class="shop-sub">แอพแท้ ราคาน่ารัก ดูแลตลอดการใช้งาน 💕</div>
+    
+    <div class="pills-container">
+      <div class="pill-btn">💎 แอปพรีเมี่ยม</div>
+      <div class="pill-btn">🎨 แอปแต่งรูป</div>
+      <div class="pill-btn">🎬 แอปตัดต่อ</div>
+    </div>
   </div>
 
-  <div class="status-bar">
-    <div class="status-dot"></div>พร้อมรับออเดอร์นะคะ 💕
+  <div class="status-bar-dashed">
+    <div class="status-dot"></div>พร้อมรับออเดอร์นะคะ 🎀
   </div>
+
+  <div class="div">✦ · · ✦ · · ✦</div>
 
   <div class="card">
     <div class="ct">💰 ราคาเหรียญ LINE</div>
@@ -138,7 +203,7 @@
     <div class="price-item"><span>100 เหรียญ</span><span class="price-tag">50 บาท</span></div>
     <div class="price-item"><span>150 เหรียญ</span><span class="price-tag">75 บาท</span></div>
     <div class="price-item"><span>Line Melody</span><span class="price-tag">45 บาท</span></div>
-    <p style="margin-top:15px; font-size:0.85rem; color:var(--color2);">✅ เหรียญแท้ ไม่ดึงคืน ส่งเป็นของขวัญ 100%</p>
+    <p style="margin-top:15px; font-size:0.85rem; color:var(--color2);">✅ เหรียญแท้ ไม่ดึงคืน ส่งเป็นของขวัญได้ 100%</p>
   </div>
 
   <div class="card">
@@ -146,7 +211,7 @@
     <div class="step-item"><div class="step-num">1</div><div class="step-text">แคปรูปภาพ หรือแชร์ลิงก์ลายที่ต้องการ</div></div>
     <div class="step-item"><div class="step-num">2</div><div class="step-text">แจ้ง ID Line หรือ QR Code ของผู้รับ</div></div>
     <div class="step-item"><div class="step-num">3</div><div class="step-text">รอแม่ค้ารวมยอด และโอนเงินแจ้งสลิป</div></div>
-    <p style="font-size:0.8rem; color:#C2185B;">⚠️ รับฝากลิงก์แบบคอนแทค กรุณาแจ้งทุกครั้ง</p>
+    <p style="font-size:0.8rem; color:#EC407A; font-weight: 500;">⚠️ รับฝากลิงก์แบบคอนแทค กรุณาแจ้งทุกครั้ง</p>
   </div>
 
   <div class="card">
@@ -204,6 +269,14 @@
     <div class="step-item"><div class="step-num">2</div><div class="step-text">รอแม่ค้าเช็คสินค้าและแจ้งยอด</div></div>
     <div class="step-item"><div class="step-num" style="background:var(--color1);">3</div><div class="step-text">โอนเงินแจ้งสลิป แล้วรอรับสินค้าได้เลย</div></div>
     <p style="font-size:0.8rem; color:var(--textl);">📢 อย่าลืมอ่านกฎก่อนเข้าใช้งานทุกครั้งนะคะ</p>
+  </div>
+
+  <div class="card">
+    <div class="ct">📱 ช่องทางติดต่อ</div>
+    <a href="https://line.me/ti/p/@319mynzv" class="lnk" target="_blank">
+      <span style="font-size:1.5rem; margin-right:10px;">💬</span>
+      <div><div class="lnk-name">Line Official</div><div class="lnk-desc">@319mynzv</div></div>
+    </a>
   </div>
 
   <div class="cta-wrap" style="text-align:center;">
