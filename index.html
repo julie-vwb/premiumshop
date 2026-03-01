@@ -15,13 +15,14 @@
     --text: #5D3587;
     --textl: #8E60B8;
     
-    /* สีราคาใหม่: ชมพู-ม่วงพาสเทลละมุน */
-    --price-bg: linear-gradient(135deg, #FADADD, #E6E6FA); /* Dusty Pink to Lavender */
-    --price-text: #6A1B9A;
+    /* สีพื้นหลังราคาใหม่: ม่วงพาสเทลสีเดียว (Solid) */
+    --price-bg-solid: #E6E6FA; 
+    --price-text: #5D3587;
     
     --bg-grad: radial-gradient(circle at center, var(--p-light) 0%, #E1BEE7 50%, #CE93D8 100%);
     --white: rgba(255, 255, 255, 0.82); 
     --diffuse-shadow: 0 10px 30px rgba(156, 106, 222, 0.2);
+    --price-shadow: 0 4px 8px rgba(0,0,0,0.05);
   }
   
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -54,19 +55,17 @@
 
   .wrap { max-width:480px; margin:0 auto; padding:20px 15px 70px; position:relative; z-index:1; }
 
-  /* ปรับหัวข้อร้านให้ Responsive และบรรทัดเดียว */
   .header { text-align:center; padding:10px 0 20px; animation:fadeUp .7s ease both; }
 
   .shop-name {
-    font-size: clamp(2rem, 10vw, 3.2rem); /* ปรับขนาดอัตโนมัติตามหน้าจอ */
+    font-size: clamp(2rem, 10vw, 3.2rem); 
     font-weight: 700;
     color: var(--shop-name-bright);
     text-shadow: 2px 3px 8px rgba(156, 106, 222, 0.3);
     margin-bottom: 5px;
     letter-spacing: -1px;
-    white-space: nowrap; /* ห้ามตัดบรรทัด */
+    white-space: nowrap; 
     overflow: hidden;
-    text-overflow: clip;
     display: block;
     width: 100%;
   }
@@ -129,16 +128,15 @@
   }
   .price-item:last-child { border-bottom: none; }
   
-  /* ปรับแต่งปุ่มราคาใหม่ตามบรีฟ */
   .price-tag {
-    background: var(--price-bg); 
+    background: var(--price-bg-solid); 
     color: var(--price-text);
     padding: 6px 18px; 
     border-radius: 20px; 
     font-weight: 700; 
     min-width: 80px; 
     text-align: center;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.08); /* เงาเบาๆ ให้มีมิติ */
+    box-shadow: var(--price-shadow);
     border: 1px solid rgba(255, 255, 255, 0.6);
   }
 
@@ -184,7 +182,7 @@
     <div class="shop-description">
       Welcome to Premium Shop ✨<br>
       ร้านขายสติกเกอร์ & แอพพรีเมียม ราคาน่ารัก ของแท้ 100%<br>
-      ดูแลตลอดการใช้งาน 💗
+      ดูแลตลอดการใช้งาน💗
     </div>
     <div class="pill-row">
       <div class="pill-item">🧸 สติกเกอร์ไลน์</div>
@@ -194,7 +192,7 @@
   </div>
 
   <div class="status-bar">
-    <div class="status-dot"></div>พร้อมรับออเดอร์นะคะ 🌟
+    <div class="status-dot"></div>พร้อมรับออเดอร์นะคะ 🌈🍭
   </div>
 
   <div class="div">✧ • * . • * . • ✧</div>
@@ -208,6 +206,7 @@
     <div class="price-item"><span>Line Melody 🎵</span><span class="price-tag">45 บาท</span></div>
     <p style="margin-top:12px; font-size:0.8rem; color:var(--p-dark); text-align: center; font-weight: 700;">✅ เหรียญแท้ ไม่ดึงคืน ส่งเป็นของขวัญ 100% ✨</p>
   </div>
+
   <div class="card">
     <div class="ct">📝 วิธีสั่งซื้อ (Line) 🎀</div>
     <div class="step-item"><div class="step-num-grad s1">1</div><div class="step-text">แคปรูปภาพ หรือแชร์ลิงก์ลายที่ต้องการ 📸</div></div>
@@ -215,7 +214,6 @@
     <div class="step-item"><div class="step-num-grad s3">3</div><div class="step-text">รอแม่ค้ารวมยอด และโอนเงินแจ้งสลิป 💸</div></div>
     <p style="font-size:0.8rem; color:var(--p-dark); font-weight: 700; text-align: center;">⚠️ รับฝากลิงก์แบบคอนแทค แจ้งด้วยนะคะ 🙏</p>
   </div>
-
   <div class="card">
     <div class="ct">💎 แอปพรีเมี่ยม 🎬</div>
     
@@ -285,7 +283,7 @@
   </div>
 
   <div class="footer">
-    <div>ขอบคุณที่แวะมาอุดหนุนกันนะคะ 🧸🩷</div>
+    <div>ขอบคุณที่แวะมาอุดหนุนนะคะ 🧸🩷</div>
     <div style="margin-top:5px; opacity:0.8;">Premium Shop · 2026 ✨</div>
   </div>
 </div>
