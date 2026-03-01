@@ -14,8 +14,11 @@
     --shop-name-bright: #FFEBEE; 
     --text: #5D3587;
     --textl: #8E60B8;
-    --tag-bg: #FDE7F0;
-    --tag-text: #AD1457;
+    
+    /* สีราคาใหม่: ชมพู-ม่วงพาสเทลละมุน */
+    --price-bg: linear-gradient(135deg, #FADADD, #E6E6FA); /* Dusty Pink to Lavender */
+    --price-text: #6A1B9A;
+    
     --bg-grad: radial-gradient(circle at center, var(--p-light) 0%, #E1BEE7 50%, #CE93D8 100%);
     --white: rgba(255, 255, 255, 0.82); 
     --diffuse-shadow: 0 10px 30px rgba(156, 106, 222, 0.2);
@@ -49,41 +52,46 @@
   .sp:nth-child(5){bottom:22%;left:10%;font-size:18px;animation-delay:1.5s;}
   @keyframes fl {0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-15px) rotate(10deg);}}
 
-  .wrap { max-width:480px; margin:0 auto; padding:40px 15px 70px; position:relative; z-index:1; }
+  .wrap { max-width:480px; margin:0 auto; padding:20px 15px 70px; position:relative; z-index:1; }
 
-  .header { text-align:center; padding:20px 0 30px; animation:fadeUp .7s ease both; }
+  /* ปรับหัวข้อร้านให้ Responsive และบรรทัดเดียว */
+  .header { text-align:center; padding:10px 0 20px; animation:fadeUp .7s ease both; }
 
   .shop-name {
-    font-size: 3.4rem; font-weight: 700;
+    font-size: clamp(2rem, 10vw, 3.2rem); /* ปรับขนาดอัตโนมัติตามหน้าจอ */
+    font-weight: 700;
     color: var(--shop-name-bright);
-    text-shadow: 2px 4px 10px rgba(156, 106, 222, 0.3);
-    margin-bottom: 8px;
+    text-shadow: 2px 3px 8px rgba(156, 106, 222, 0.3);
+    margin-bottom: 5px;
     letter-spacing: -1px;
+    white-space: nowrap; /* ห้ามตัดบรรทัด */
+    overflow: hidden;
+    text-overflow: clip;
+    display: block;
+    width: 100%;
   }
 
-  /* คำโปรยแบบข้อความปกติใต้ชื่อร้าน */
   .shop-description {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--text);
-    line-height: 1.6;
-    margin-bottom: 18px;
-    opacity: 0.9;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    opacity: 0.95;
   }
 
-  /* ปุ่ม Pill 3 ช่องแบบใหม่ */
   .pill-row {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     margin-top: 5px;
   }
   .pill-item {
     background: linear-gradient(135deg, #FCE4EC, #F3E5F5);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: #7E57C2;
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
@@ -91,77 +99,80 @@
   }
 
   .status-bar {
-    margin: 25px auto; padding: 14px; width: 92%;
+    margin: 15px auto; padding: 12px; width: 92%;
     border: 2px dashed var(--m-mid); border-radius: 18px;
-    display: flex; align-items: center; justify-content: center; gap: 12px;
-    background: rgba(255, 255, 255, 0.5); font-weight: 700;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: rgba(255, 255, 255, 0.5); font-weight: 700; font-size: 0.9rem;
   }
   .status-dot {
-    width: 12px; height: 12px; background-color: var(--p-dark);
+    width: 10px; height: 10px; background-color: var(--p-dark);
     border-radius: 50%; box-shadow: 0 0 10px rgba(236, 111, 159, 0.6); animation: pulse 1.5s infinite;
   }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.6;transform:scale(1.15);} }
 
-  .div { text-align: center; margin: 20px 0; color: #fff; font-size: 1.2rem; opacity: 0.9; }
+  .div { text-align: center; margin: 15px 0; color: #fff; font-size: 1.1rem; opacity: 0.8; }
 
   .card {
     background: var(--white); backdrop-filter:blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius:25px; padding:22px 20px; margin-bottom:18px;
+    border-radius:25px; padding:20px; margin-bottom:15px;
     box-shadow: var(--diffuse-shadow);
     animation:fadeUp .6s ease both;
   }
 
-  .ct { font-size:1.1rem; font-weight:700; color:var(--text); margin-bottom:15px; display:flex; align-items:center; gap:10px; }
+  .ct { font-size:1.05rem; font-weight:700; color:var(--text); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
   
   .price-item {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 15px 0; border-bottom: 1px dashed var(--m-mid);
-    font-weight: 500;
+    padding: 12px 0; border-bottom: 1px dashed rgba(181, 126, 220, 0.4);
+    font-weight: 600; font-size: 0.95rem;
   }
   .price-item:last-child { border-bottom: none; }
+  
+  /* ปรับแต่งปุ่มราคาใหม่ตามบรีฟ */
   .price-tag {
-    background: var(--tag-bg); color: var(--tag-text);
-    padding: 5px 20px; border-radius: 25px; font-weight: 700; min-width: 75px; text-align: center;
+    background: var(--price-bg); 
+    color: var(--price-text);
+    padding: 6px 18px; 
+    border-radius: 20px; 
+    font-weight: 700; 
+    min-width: 80px; 
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08); /* เงาเบาๆ ให้มีมิติ */
+    border: 1px solid rgba(255, 255, 255, 0.6);
   }
 
-  .step-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 18px; }
-  
+  .step-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; }
   .step-num-grad {
-    width: 28px; height: 28px;
+    width: 26px; height: 26px;
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 0.9rem; font-weight: 700; flex-shrink: 0;
-    color: white;
-    box-shadow: 0 4px 10px rgba(181, 126, 220, 0.3);
+    font-size: 0.85rem; font-weight: 700; flex-shrink: 0; color: white;
   }
-  
   .s1 { background: linear-gradient(135deg, var(--m-dark) 0%, var(--p-dark) 100%); }
   .s2 { background: linear-gradient(135deg, var(--m-mid) 0%, var(--p-light) 100%); }
   .s3 { background: linear-gradient(135deg, var(--p-dark) 0%, var(--m-mid) 100%); }
-  
-  .step-text { font-size: 0.95rem; line-height: 1.7; color: var(--text); font-weight: 600; }
+  .step-text { font-size: 0.9rem; line-height: 1.6; color: var(--text); font-weight: 500; }
 
   .lnk {
-    display:flex; align-items:center; gap:12px;
-    background: white;
-    border: 1.5px solid rgba(181, 126, 220, 0.2); border-radius:16px;
-    padding:14px; text-decoration:none; margin-bottom:10px; transition: 0.3s ease;
+    display:flex; align-items:center; gap:10px;
+    background: white; border-radius:16px;
+    padding:12px; text-decoration:none; margin-bottom:10px; transition: 0.3s ease;
+    border: 1px solid rgba(181, 126, 220, 0.1);
   }
-  .lnk:hover { transform:translateY(-3px); border-color: var(--p-dark); box-shadow: 0 8px 20px rgba(236, 111, 159, 0.15); }
-  .lnk-name { font-weight:700; font-size:.95rem; color:var(--text); }
-  .lnk-desc { font-size:0.78rem; color:var(--textl); font-weight: 500; }
+  .lnk:hover { transform:translateY(-2px); border-color: var(--p-dark); }
+  .lnk-name { font-weight:700; font-size:.9rem; color:var(--text); }
+  .lnk-desc { font-size:0.75rem; color:var(--textl); font-weight: 500; }
 
   .cta-btn {
-    display:inline-block; width:100%; max-width:320px;
+    display:inline-block; width:100%; max-width:300px;
     background:linear-gradient(135deg, var(--p-dark), var(--m-dark));
-    color:#fff; font-size:1.15rem; font-weight:700; padding:16px 40px;
-    border-radius:50px; text-decoration:none; box-shadow:0 10px 25px rgba(236, 111, 159, 0.4);
+    color:#fff; font-size:1.1rem; font-weight:700; padding:14px 30px;
+    border-radius:50px; text-decoration:none; box-shadow:0 8px 20px rgba(236, 111, 159, 0.3);
     transition: 0.3s;
   }
-  .cta-btn:hover { transform: scale(1.05); }
 
-  .footer { text-align:center; padding:20px 0; font-size:.8rem; color:#fff; font-weight: 600; text-shadow: 1px 1px 3px rgba(0,0,0,0.1); }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
+  .footer { text-align:center; padding:15px 0; font-size:.75rem; color:#fff; font-weight: 600; opacity: 0.9; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);} }
 </style>
 </head>
 <body>
@@ -170,13 +181,11 @@
 <div class="wrap">
   <div class="header">
     <div class="shop-name">Premium Shop</div>
-    
     <div class="shop-description">
       Welcome to Premium Shop ✨<br>
       ร้านขายสติกเกอร์ & แอพพรีเมียม ราคาน่ารัก ของแท้ 100%<br>
-      ดูแลตลอดการใช้งาน พร้อมรับออเดอร์ค่า 💗
+      ดูแลตลอดการใช้งาน 💗
     </div>
-
     <div class="pill-row">
       <div class="pill-item">🧸 สติกเกอร์ไลน์</div>
       <div class="pill-item">🎬 แอพพรีเมียม</div>
@@ -185,7 +194,7 @@
   </div>
 
   <div class="status-bar">
-    <div class="status-dot"></div>พร้อมรับออเดอร์นะคะ 🌈🍭
+    <div class="status-dot"></div>พร้อมรับออเดอร์นะคะ 🌟
   </div>
 
   <div class="div">✧ • * . • * . • ✧</div>
@@ -197,9 +206,8 @@
     <div class="price-item"><span>100 เหรียญ 🪙</span><span class="price-tag">50 บาท</span></div>
     <div class="price-item"><span>150 เหรียญ 🪙</span><span class="price-tag">75 บาท</span></div>
     <div class="price-item"><span>Line Melody 🎵</span><span class="price-tag">45 บาท</span></div>
-    <p style="margin-top:15px; font-size:0.85rem; color:var(--p-dark); text-align: center; font-weight: 700;">✅ เหรียญแท้ ไม่ดึงคืน ส่งเป็นของขวัญ 100% ✨</p>
+    <p style="margin-top:12px; font-size:0.8rem; color:var(--p-dark); text-align: center; font-weight: 700;">✅ เหรียญแท้ ไม่ดึงคืน ส่งเป็นของขวัญ 100% ✨</p>
   </div>
-
   <div class="card">
     <div class="ct">📝 วิธีสั่งซื้อ (Line) 🎀</div>
     <div class="step-item"><div class="step-num-grad s1">1</div><div class="step-text">แคปรูปภาพ หรือแชร์ลิงก์ลายที่ต้องการ 📸</div></div>
@@ -207,46 +215,47 @@
     <div class="step-item"><div class="step-num-grad s3">3</div><div class="step-text">รอแม่ค้ารวมยอด และโอนเงินแจ้งสลิป 💸</div></div>
     <p style="font-size:0.8rem; color:var(--p-dark); font-weight: 700; text-align: center;">⚠️ รับฝากลิงก์แบบคอนแทค แจ้งด้วยนะคะ 🙏</p>
   </div>
+
   <div class="card">
     <div class="ct">💎 แอปพรีเมี่ยม 🎬</div>
     
     <a href="https://drive.google.com/drive/folders/1w7B9yuiQIA06vfk05nQdsDAulnd806tA" class="lnk" target="_blank">
-      <span style="font-size:1.5rem; margin-right:10px;">🎞️</span>
+      <span style="font-size:1.4rem; margin-right:8px;">🎞️</span>
       <div><div class="lnk-name">Bilibili</div><div class="lnk-desc">อนิเมะพรีเมี่ยม จิ้มเลย ✨</div></div>
     </a>
     
     <a href="https://drive.google.com/drive/folders/1K02IyNmQIGVpmiQ7dPSu3WfGpEPJdutR" class="lnk" target="_blank">
-      <span style="font-size:1.5rem; margin-right:10px;">🏰</span>
+      <span style="font-size:1.4rem; margin-right:8px;">🏰</span>
       <div><div class="lnk-name">Disney+</div><div class="lnk-desc">ดูหนังดิสนีย์ จิ้มเลย ✨</div></div>
     </a>
     
     <a href="https://drive.google.com/drive/folders/1FhNIvITWf00y_-srDtRfK9YqVCUdLWRl" class="lnk" target="_blank">
-      <span style="font-size:1.5rem; margin-right:10px;">🥢</span>
+      <span style="font-size:1.4rem; margin-right:8px;">🥢</span>
       <div><div class="lnk-name">iQIYI</div><div class="lnk-desc">ซีรีส์จีนยอดฮิต จิ้มเลย ✨</div></div>
     </a>
     
     <a href="https://drive.google.com/drive/folders/1hFFDiA2pViXl-zMMuGu47Gvy5agpXraw" class="lnk" target="_blank">
-      <span style="font-size:1.5rem; margin-right:10px;">🎥</span>
+      <span style="font-size:1.4rem; margin-right:8px;">🎥</span>
       <div><div class="lnk-name">Netflix</div><div class="lnk-desc">หนังและซีรีส์ จิ้มเลย ✨</div></div>
     </a>
     
     <a href="https://drive.google.com/drive/folders/1s-6S-k8PUFjLemqAVY0RbSLNybVqX7ba" class="lnk" target="_blank">
-      <span style="font-size:1.5rem; margin-right:10px;">💙</span>
+      <span style="font-size:1.4rem; margin-right:8px;">💙</span>
       <div><div class="lnk-name">Prime Video</div><div class="lnk-desc">หนังดังระดับโลก จิ้มเลย ✨</div></div>
     </a>
     
     <a href="https://drive.google.com/drive/folders/1VzTYaa882t4k_GhI6RM5uHgTKjCLJAJ0" class="lnk" target="_blank">
-      <span style="font-size:1.5rem; margin-right:10px;">🌟</span>
+      <span style="font-size:1.4rem; margin-right:8px;">🌟</span>
       <div><div class="lnk-name">Viu</div><div class="lnk-desc">ซีรีส์เกาหลี จิ้มเลย ✨</div></div>
     </a>
     
     <a href="https://drive.google.com/drive/folders/1AQVw7ginFbFC27pczCCuZnSnv6VneOl_" class="lnk" target="_blank">
-      <span style="font-size:1.5rem; margin-right:10px;">🟢</span>
+      <span style="font-size:1.4rem; margin-right:8px;">🟢</span>
       <div><div class="lnk-name">WeTV</div><div class="lnk-desc">ซีรีส์จีนสุดฟิน จิ้มเลย ✨</div></div>
     </a>
     
     <a href="https://drive.google.com/drive/folders/1JoOXBU_JmOlHK1eDTJwAKoxRxrzi3jpq" class="lnk" target="_blank">
-      <span style="font-size:1.5rem; margin-right:10px;">🎧</span>
+      <span style="font-size:1.4rem; margin-right:8px;">🎧</span>
       <div><div class="lnk-name">YouTube (ไม่ต่อเมล)</div><div class="lnk-desc">ฟังเพลงไม่มีโฆษณา จิ้มเลย ✨</div></div>
     </a>
   </div>
@@ -256,17 +265,17 @@
     <div class="step-item"><div class="step-num-grad s1">1</div><div class="step-text">แจ้งแอปที่ต้องการ + จำนวนวัน 🗓️</div></div>
     <div class="step-item"><div class="step-num-grad s2">2</div><div class="step-text">รอแม่ค้าเช็คสินค้าและแจ้งยอด 🛒</div></div>
     <div class="step-item"><div class="step-num-grad s3">3</div><div class="step-text">โอนเงินแจ้งสลิป แล้วรอรับสินค้า 🎁</div></div>
-    <p style="font-size:0.8rem; color:var(--text); text-align: center; margin-top: 10px; font-weight: 700;">📢 ดูแลตลอดการใช้งานนะคะ 🧸💖</p>
+    <p style="font-size:0.8rem; color:var(--text); text-align: center; margin-top: 5px; font-weight: 700;">📢 ดูแลตลอดการใช้งานนะคะ 🧸💖</p>
   </div>
 
   <div class="card">
     <div class="ct">📱 ช่องทางติดต่อ 🍦</div>
     <a href="https://instagram.com/storepremium.yt2" class="lnk" target="_blank">
-      <span style="font-size:1.5rem; margin-right:10px;">📸</span>
+      <span style="font-size:1.4rem; margin-right:8px;">📸</span>
       <div><div class="lnk-name">Ig.storepremium.yt2</div><div class="lnk-desc">ติดตามข่าวสารและรีวิว 💜</div></div>
     </a>
     <a href="https://line.me/ti/p/@319mynzv" class="lnk" target="_blank">
-      <span style="font-size:1.5rem; margin-right:10px;">💬</span>
+      <span style="font-size:1.4rem; margin-right:8px;">💬</span>
       <div><div class="lnk-name">Line @319mynzv</div><div class="lnk-desc">สั่งซื้อสินค้าหรือสอบถาม 💜</div></div>
     </a>
   </div>
@@ -276,7 +285,7 @@
   </div>
 
   <div class="footer">
-    <div>ขอบคุณที่แวะมาอุดหนุนนะคะ 🧸🩷</div>
+    <div>ขอบคุณที่แวะมาอุดหนุนกันนะคะ 🧸🩷</div>
     <div style="margin-top:5px; opacity:0.8;">Premium Shop · 2026 ✨</div>
   </div>
 </div>
