@@ -7,25 +7,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* ปรับโทนสีหลักให้เป็นพาสเทลทั้งหมด */
-    --color1: #F8BBD0; /* ชมพูพาสเทลอ่อน */
-    --color2: #F48FB1; /* ชมพูพาสเทลกลาง */
-    --color3: #CE93D8; /* ม่วงพาสเทลอ่อน */
-    --color4: #BA68C8; /* ม่วงพาสเทลกลาง */
+    /* โทนสีใหม่ตามสั่ง */
+    --p-dark: #EC6F9F;   /* ชมพูเข้ม */
+    --m-mid: #B57EDC;    /* ม่วงกลาง */
+    --m-dark: #9C6ADE;   /* ม่วงเข้ม */
+    --p-light: #F8C8DC;  /* ชมพูอ่อนกลางจอ */
     
-    /* สีตัวหนังสือพาสเทลเทา-ม่วง */
-    --text: #7E57C2; /* ม่วงพาสเทลโทนเทา */
-    --textl: #B39DDB; /* ม่วงพาสเทลอ่อนมาก */
+    --text: #5D3587;     /* ปรับสีตัวหนังสือให้เข้ากับโทนเข้ม */
+    --textl: #8E60B8;
+    --shop-name-color: #EC6F9F; 
     
-    /* ปรับสีชื่อร้านใหม่ตามรูปที่ส่งมา */
-    --shop-name-color: #B971A8; /* ม่วงพาสเทลละมุน */
+    --tag-bg: #FDE7F0;
+    --tag-text: #AD1457;
     
-    --tag-bg: #F3E5F5; /* พื้นหลังปุ่มราคา (ม่วงอ่อนมาก) */
-    --tag-text: #6A1B9A; /* สีตัวเลขในปุ่มราคา (ม่วงพาสเทลเข้ม) */
+    /* พื้นหลังเข้มขึ้น 15% และไล่สีจากขอบจอเข้าหาจุดกลาง */
+    --bg-grad: radial-gradient(circle at center, var(--p-light) 0%, #E1BEE7 50%, #CE93D8 100%);
     
-    /* Gradient พื้นหลังพาสเทลนุ่มนวล */
-    --bg-grad: linear-gradient(135deg, #FCE4EC 0%, #FFFFFF 50%, #F3E5F5 100%);
-    --white: rgba(255, 255, 255, 0.9);
+    /* การ์ดดูโปร่งแสงน้อยลงและมีความนุ่มนวลขึ้น */
+    --white: rgba(255, 255, 255, 0.82); 
+    --diffuse-shadow: 0 15px 35px rgba(156, 106, 222, 0.25);
   }
   
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -43,12 +43,12 @@
     content: '';
     position:fixed; inset:0;
     background:
-      radial-gradient(circle at 10% 20%, rgba(248, 187, 208, 0.3) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, rgba(206, 147, 216, 0.2) 0%, transparent 40%);
+      radial-gradient(circle at 10% 20%, rgba(236, 111, 159, 0.25) 0%, transparent 45%),
+      radial-gradient(circle at 90% 80%, rgba(156, 106, 222, 0.2) 0%, transparent 45%);
     pointer-events:none; z-index:0;
   }
 
-  .sp { position:fixed; pointer-events:none; z-index:0; animation:fl 5s ease-in-out infinite; opacity:0.6; color: var(--color3); }
+  .sp { position:fixed; pointer-events:none; z-index:0; animation:fl 5s ease-in-out infinite; opacity:0.7; color: var(--m-mid); }
   .sp:nth-child(1){top:5%;left:8%;font-size:24px;}
   .sp:nth-child(2){top:15%;right:10%;font-size:16px;animation-delay:1s;}
   .sp:nth-child(3){top:40%;left:3%;font-size:14px;animation-delay:2s;}
@@ -72,88 +72,92 @@
   .logo-img {
     width: 180px; height: 180px;
     object-fit: cover; border-radius: 50%;
-    border: 7px solid #fff; outline: 2px solid var(--color2);
-    box-shadow: 0 10px 30px rgba(244, 143, 177, 0.2);
+    border: 7px solid #fff; outline: 2px solid var(--p-dark);
+    box-shadow: 0 10px 30px rgba(236, 111, 159, 0.3);
     position: relative; z-index: 2;
   }
 
   .shop-name {
     font-size: 3.2rem; font-weight: 700;
-    color: var(--shop-name-color); /* ใช้สีใหม่ตามรูปที่ส่งมา */
-    text-shadow: 2px 2px 5px rgba(185, 113, 168, 0.15); /* ปรับสีเงาให้รับกัน */
+    color: var(--shop-name-color);
+    text-shadow: 2px 2px 8px rgba(236, 111, 159, 0.2);
     margin-bottom: 5px;
-    letter-spacing: -1px; /* ปรับให้ดูเป็นชื่อร้านแบบในรูป */
+    letter-spacing: -1px;
   }
-  .shop-sub { font-size:.9rem; color:var(--textl); line-height:1.7; padding: 0 25px; }
+  .shop-sub { font-size:.9rem; color:var(--text); font-weight: 500; line-height:1.7; padding: 0 25px; opacity: 0.85; }
 
   .status-bar {
     margin: 25px auto; padding: 14px; width: 92%;
-    border: 2px dashed var(--color3); border-radius: 18px;
+    border: 2px dashed var(--m-mid); border-radius: 18px;
     display: flex; align-items: center; justify-content: center; gap: 12px;
-    background: rgba(255, 255, 255, 0.6); font-weight: 500;
+    background: rgba(255, 255, 255, 0.5); font-weight: 600;
   }
   .status-dot {
-    width: 12px; height: 12px; background-color: #F48FB1; /* ชมพูพาสเทลแจม */
-    border-radius: 50%; box-shadow: 0 0 10px rgba(244, 143, 177, 0.5); animation: pulse 1.5s infinite;
+    width: 12px; height: 12px; background-color: var(--p-dark);
+    border-radius: 50%; box-shadow: 0 0 10px rgba(236, 111, 159, 0.6); animation: pulse 1.5s infinite;
   }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.6;transform:scale(1.15);} }
 
+  .div { text-align: center; margin: 20px 0; color: var(--m-mid); font-size: 1.2rem; opacity: 0.8; }
+
   .card {
     background: var(--white); backdrop-filter:blur(15px);
-    border:1.5px solid rgba(244, 143, 177, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius:25px; padding:22px 20px; margin-bottom:16px;
-    box-shadow:0 6px 20px rgba(186, 104, 200, 0.08);
+    box-shadow: var(--diffuse-shadow);
     animation:fadeUp .6s ease both;
   }
 
-  .ct { font-size:1.05rem; font-weight:600; color:var(--text); margin-bottom:15px; display:flex; align-items:center; gap:10px; }
+  .ct { font-size:1.1rem; font-weight:700; color:var(--text); margin-bottom:15px; display:flex; align-items:center; gap:10px; }
   
   .price-item {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 15px 0; border-bottom: 1px dashed var(--color3);
+    padding: 15px 0; border-bottom: 1px dashed var(--m-mid);
+    font-weight: 500;
   }
   .price-item:last-child { border-bottom: none; }
   .price-tag {
     background: var(--tag-bg); color: var(--tag-text);
-    padding: 5px 20px; border-radius: 25px; font-weight: 600; min-width: 75px; text-align: center;
+    padding: 5px 20px; border-radius: 25px; font-weight: 700; min-width: 75px; text-align: center;
   }
 
   .step-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 18px; }
   
-  /* ตัวเลขลำดับแบบวงกลมไล่สีตามรูปที่ส่งมา */
   .step-num-grad {
     width: 28px; height: 28px;
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 0.9rem; font-weight: 600; flex-shrink: 0;
-    color: white; /* สีตัวเลขขาว */
-    box-shadow: 0 3px 8px rgba(186, 104, 200, 0.2);
+    font-size: 0.9rem; font-weight: 700; flex-shrink: 0;
+    color: white;
+    box-shadow: 0 4px 10px rgba(181, 126, 220, 0.3);
   }
   
-  /* ปรับการไล่สีให้เป็นม่วง-ชมพูพาสเทลละมุน */
-  .s1 { background: linear-gradient(135deg, #BA68C8 0%, #F48FB1 100%); } /* ม่วง -> ชมพู */
-  .s2 { background: linear-gradient(135deg, #CE93D8 0%, #F8BBD0 100%); } /* ม่วงอ่อน -> ชมพูอ่อน */
-  .s3 { background: linear-gradient(135deg, #E1BEE7 0%, #F48FB1 100%); } /* ม่วงพาสเทล -> ชมพูพาสเทล */
+  .s1 { background: linear-gradient(135deg, var(--m-dark) 0%, var(--p-dark) 100%); }
+  .s2 { background: linear-gradient(135deg, var(--m-mid) 0%, var(--p-light) 100%); }
+  .s3 { background: linear-gradient(135deg, var(--p-dark) 0%, var(--m-mid) 100%); }
   
-  .step-text { font-size: 0.95rem; line-height: 1.7; color: var(--text); font-weight: 500; }
+  .step-text { font-size: 0.95rem; line-height: 1.7; color: var(--text); font-weight: 600; }
 
   .lnk {
     display:flex; align-items:center; gap:12px;
-    background:linear-gradient(135deg,#ffffff,#fdf4ff);
-    border:1.5px solid rgba(244, 143, 177, 0.15); border-radius:16px;
-    padding:14px; text-decoration:none; margin-bottom:10px; transition: 0.2s;
+    background: white;
+    border: 1.5px solid rgba(181, 126, 220, 0.2); border-radius:16px;
+    padding:14px; text-decoration:none; margin-bottom:10px; transition: 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
   }
-  .lnk:hover { transform:translateX(5px); border-color: var(--color4); background: #fff; }
-  .lnk-name { font-weight:600; font-size:.95rem; color:var(--text); }
-  .lnk-desc { font-size:0.78rem; color:var(--textl); }
+  .lnk:hover { transform:translateY(-3px); border-color: var(--p-dark); box-shadow: 0 8px 20px rgba(236, 111, 159, 0.15); }
+  .lnk-name { font-weight:700; font-size:.95rem; color:var(--text); }
+  .lnk-desc { font-size:0.78rem; color:var(--textl); font-weight: 500; }
 
   .cta-btn {
     display:inline-block; width:100%; max-width:320px;
-    background:linear-gradient(135deg, var(--color2), var(--color4));
-    color:#fff; font-size:1.1rem; font-weight:500; padding:15px 40px;
-    border-radius:50px; text-decoration:none; box-shadow:0 10px 25px rgba(186, 104, 200, 0.2);
+    background:linear-gradient(135deg, var(--p-dark), var(--m-dark));
+    color:#fff; font-size:1.15rem; font-weight:700; padding:16px 40px;
+    border-radius:50px; text-decoration:none; box-shadow:0 10px 25px rgba(236, 111, 159, 0.4);
+    transition: 0.3s;
   }
+  .cta-btn:hover { transform: scale(1.05); box-shadow: 0 12px 30px rgba(236, 111, 159, 0.5); }
 
-  .footer { text-align:center; padding:20px 0; font-size:.78rem; color:var(--textl); }
+  .footer { text-align:center; padding:20px 0; font-size:.8rem; color:var(--text); font-weight: 600; opacity: 0.7; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
 </style>
 </head>
@@ -182,7 +186,7 @@
     <div class="price-item"><span>100 เหรียญ</span><span class="price-tag">50 บาท</span></div>
     <div class="price-item"><span>150 เหรียญ</span><span class="price-tag">75 บาท</span></div>
     <div class="price-item"><span>Line Melody</span><span class="price-tag">45 บาท</span></div>
-    <p style="margin-top:15px; font-size:0.85rem; color:var(--color2);">✅ เหรียญแท้ ไม่ดึงคืน ส่งเป็นของขวัญ 100%</p>
+    <p style="margin-top:15px; font-size:0.85rem; color:var(--p-dark); text-align: center; font-weight: 700;">✅ เหรียญแท้ ไม่ดึงคืน ส่งเป็นของขวัญ 100%</p>
   </div>
 
   <div class="card">
@@ -190,7 +194,7 @@
     <div class="step-item"><div class="step-num-grad s1">1</div><div class="step-text">แคปรูปภาพ หรือแชร์ลิงก์ลายที่ต้องการ</div></div>
     <div class="step-item"><div class="step-num-grad s2">2</div><div class="step-text">แจ้ง ID Line หรือ QR Code ของผู้รับ</div></div>
     <div class="step-item"><div class="step-num-grad s3">3</div><div class="step-text">รอแม่ค้ารวมยอด และโอนเงินแจ้งสลิป</div></div>
-    <p style="font-size:0.8rem; color:#EC407A; font-weight: 500;">⚠️ รับฝากลิงก์แบบคอนแทค กรุณาแจ้งทุกครั้ง</p>
+    <p style="font-size:0.8rem; color:var(--p-dark); font-weight: 700; text-align: center;">⚠️ รับฝากลิงก์แบบคอนแทค กรุณาแจ้งทุกครั้ง</p>
   </div>
   <div class="card">
     <div class="ct">💎 แอปพรีเมี่ยม</div>
@@ -230,14 +234,9 @@
       <div><div class="lnk-name">WeTV</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
     </a>
     
-    <a href="https://drive.google.com/drive/folders/1mAoQ5HRyIKN4PHNpUalZkuTirHwHt8mS" class="lnk" target="_blank">
-      <span style="font-size:1.5rem; margin-right:10px;">🎧</span>
-      <div><div class="lnk-name">YouTube (ต่อเมล)</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
-    </a>
-    
     <a href="https://drive.google.com/drive/folders/1JoOXBU_JmOlHK1eDTJwAKoxRxrzi3jpq" class="lnk" target="_blank">
       <span style="font-size:1.5rem; margin-right:10px;">🎧</span>
-      <div><div class="lnk-name">YouTube (ไม่ต่อเมล)</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
+      <div><div class="lnk-name">YouTube pre</div><div class="lnk-desc">รายละเอียดเพิ่มเติมจิ้มเลย</div></div>
     </a>
   </div>
 
@@ -246,7 +245,21 @@
     <div class="step-item"><div class="step-num-grad s1">1</div><div class="step-text">แจ้งแอปที่ต้องการ + จำนวนวัน</div></div>
     <div class="step-item"><div class="step-num-grad s2">2</div><div class="step-text">รอแม่ค้าเช็คสินค้าและแจ้งยอด</div></div>
     <div class="step-item"><div class="step-num-grad s3">3</div><div class="step-text">โอนเงินแจ้งสลิป แล้วรอรับสินค้าได้เลย</div></div>
-    <p style="font-size:0.8rem; color:var(--textl);">📢 อย่าลืมอ่านกฎก่อนเข้าใช้งานทุกครั้งนะคะ</p>
+    <p style="font-size:0.8rem; color:var(--text); text-align: center; margin-top: 10px; font-weight: 600;">📢 อย่าลืมอ่านกฎก่อนเข้าใช้งานทุกครั้งนะคะ</p>
+  </div>
+
+  <div class="card">
+    <div class="ct">📱 ช่องทางติดต่อ</div>
+    
+    <a href="https://instagram.com/storepremium.yt2" class="lnk" target="_blank">
+      <span style="font-size:1.5rem; margin-right:10px;">📸</span>
+      <div><div class="lnk-name">Ig.storepremium.yt2</div><div class="lnk-desc">ติดตามข่าวสารและรีวิวทาง IG</div></div>
+    </a>
+    
+    <a href="https://line.me/ti/p/@319mynzv" class="lnk" target="_blank">
+      <span style="font-size:1.5rem; margin-right:10px;">💬</span>
+      <div><div class="lnk-name">Line @319mynzv</div><div class="lnk-desc">สั่งซื้อสินค้าหรือสอบถามทาง Line</div></div>
+    </a>
   </div>
 
   <div class="cta-wrap" style="text-align:center;">
@@ -255,7 +268,7 @@
 
   <div class="footer">
     <div>ขอบคุณที่ใช้บริการนะคะ 🩷</div>
-    <div style="margin-top:5px; opacity:0.6;">Premium Shop · 2026</div>
+    <div style="margin-top:5px; opacity:0.8;">Premium Shop · 2026</div>
   </div>
 </div>
 </body>
